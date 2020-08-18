@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h1 class="center">Todo List</h1>
+    <div class="center">
+        <p>
+          <%= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
+         
+        </p>
+           <div class="center">
+             <% @todos.each do |todo| %>
+             <div class="col-md-4 col-md-offset-4 well profile-black-white-thin row "<%= cycle('profile-black-white-thin-b', '') %>>
+               <p class="descriptionText">Todo: <%= todo.name %></p>
+               <p>Description: <%= todo.description %></p>
+               <%= link_to "View", todo_path(todo), class: "btn btn-info bttn" %>
+                
+                  <%= link_to "Edit", edit_todo_path(todo), class: "btn btn-warning bttn" %>
+                  <%= link_to "Delete", todo_path(todo), method: :delete, data: {confirm: "Are you sure??"}, 
+                                                                      class: "btn btn-danger bttn" %>
+             
+             </div>
+           <% end %>
+        </div>
+    </div>
+  </div>
+</div>
