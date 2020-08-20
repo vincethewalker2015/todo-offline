@@ -2,18 +2,18 @@ class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
   def index
+    @todo = Todo.new
     @todos = Todo.all
+    
   end
 
-  def new
-    @todo = Todo.new
-  end
+  
 
   def create 
     @todo = Todo.new(todo_params)
     if @todo.save
       flash.now[:success] = "Todo was successfully created"
-      redirect_to todo_path(@todo)
+      redirect_to todos_path
     else
       flash.now[:danger] ="Nope... Try it again"
       render 'new'
@@ -29,7 +29,7 @@ class TodosController < ApplicationController
   def update 
     if @todo.update(todo_params)
       flash.now[:success] = "Todo was successfully Updated"
-      redirect_to todo_path(@todo)
+      redirect_to todos_path
     else
       flash.now[:danger] = "That didn't work well! try again..."
       render 'edit'
