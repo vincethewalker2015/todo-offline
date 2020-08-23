@@ -1,18 +1,18 @@
 
   <div class="row">
-    <h1 class="center">Shopping List</h1>
+    <h1 class="center page-title">Shopping List</h1>
     <div class="center">
         <p>
           <%#= link_to "Create a To Do", new_todo_path, class: "btn btn-success" %>
         </p>
         <%= render "todos/form" %> 
-           <div class="center mobile">
+           <div class="center">
              <% @todos.each do |todo| %>
-             <div class="col-md-4 col-md-offset-4 well ">
+             <div class="col-md-4 col-md-offset-4 item-body">
                <span class="descriptionText"> <%= todo.name %></span><br />
               <!-- <p>Description: <%#= todo.description %></p> -->
                
-                  <%= link_to "Delete", todo_path(todo), method: :delete,  class: "btn btn-danger btn-sm" %>
+                  <%= link_to "Delete", todo_path(todo), method: :delete,  class: "btn btn-danger btn-xs" %>
              
              </div>
            <% end %>
